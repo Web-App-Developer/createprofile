@@ -10,7 +10,9 @@ $(document).ready(function () {
 
 
     $('#webflow_skills').on('click', 'a.delete', function(events){
-        Remove_Skills_Section()
+        /////////// Remove_Skills_Section()
+        $(this).parents('div').parents('div').eq(1).remove();
+        // /////////////////////////////////
         var skillCountAfterRemove = getQuizCounters();
         Rerender_Skills_Section(skillCountAfterRemove);
      });
