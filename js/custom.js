@@ -15,6 +15,11 @@ $(document).ready(function () {
         Add_Employment(employmentCount);
     });
 
+    $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").on('click', function () {
+        var referenceCount = getReferenceCounters();
+        Add_References(referenceCount);
+    });
+
 
     $('#webflow_skills').on('click', 'a.delete', function(events){
         /////////// Remove_Skills_Section()
@@ -32,13 +37,15 @@ $(document).ready(function () {
         Rerender_Crendentials_Section(CredentialCounters);
      });
 
-    $('#webflow_employments').on('click', 'a.delete', function(events){
+    $('#webflow_references').on('click', 'a.delete', function(events){
         /////////// Remove_Skills_Section()
-        $(this).parents('div').parents('div').eq(1).remove();
+        $(this).parents('div').eq(1).remove();
         // /////////////////////////////////
-        var employmentCounters = getEmploymentCounters();
-        Rerender_Employments_Section(employmentCounters);
+        var referenceCounters = getReferenceCounters();
+        Rerender_References_Section(referenceCounters);
      });
+
+
 });
 
 
@@ -148,9 +155,7 @@ function Rerender_Crendentials_Section(CredentialCounters){
 
 function getEmploymentCounters(){
     const Employments = $("#webflow_employments > .employment");
-    console.log("=Employments===",Employments)
     const EmploymentsCount = parseInt(Employments.length);
-    console.log("==EmploymentsCount==",EmploymentsCount)
     return EmploymentsCount;
 }
 
@@ -202,4 +207,51 @@ function Rerender_Employments_Section(employmentCount){
     }
     appendFile += addEmploymentSection;
     $("#webflow_employments").append(appendFile);
+}
+
+
+function getReferenceCounters(){
+    const References = $("#webflow_references > .references");
+    const ReferencesCount = parseInt(References.length);
+    return ReferencesCount;
+}
+
+function Add_References(referenceCount){
+
+    var addReferenceSection = '';
+    addReferenceSection = `
+        <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac143-25be96d7" class="w-layout-grid profile-add-row references">
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac144-25be96d7" class="profile-add-row-column">
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (referenceCount + 2) +`</div>
+            </div>
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac147-25be96d7" class="quiz-builder-question"><label for="Employer-Name-3" class="modal-input-label-copy">Full Name</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name-3" data-name="Employer Name 3" placeholder="" id="Employer-Name-3"><label for="Employment-Position-2" class="modal-input-label">Relationship</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2"><label for="Employment-Position-3" class="modal-input-label">Phone
+                Number</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2">
+                <a href="#" class="button dashboard-body modal-button delete quiz w-button"><span class="inline-leading-icon"><strong></strong></span>Remove Reference</a>
+            </div>
+        </div>`;
+     $("#webflow_references").append(addReferenceSection);
+}
+
+function Rerender_References_Section(referenceCount){
+    var appendFile = ''
+    var addReferenceSection = '';
+    const references = document.querySelectorAll('.references');
+    references.forEach(reference => {
+        reference.remove();
+    });
+    for (var k = 0 ; k < referenceCount; k++){
+        addReferenceSection += `
+        <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac143-25be96d7" class="w-layout-grid profile-add-row references">
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac144-25be96d7" class="profile-add-row-column">
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (k + 2) +`</div>
+            </div>
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac147-25be96d7" class="quiz-builder-question"><label for="Employer-Name-3" class="modal-input-label-copy">Full Name</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name-3" data-name="Employer Name 3" placeholder="" id="Employer-Name-3"><label for="Employment-Position-2" class="modal-input-label">Relationship</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2"><label for="Employment-Position-3" class="modal-input-label">Phone
+                Number</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2">
+                <a href="#" class="button dashboard-body modal-button delete quiz w-button"><span class="inline-leading-icon"><strong></strong></span>Remove Reference</a>
+            </div>
+        </div>`;
+    }
+    appendFile += addReferenceSection;
+    $("#webflow_references").append(appendFile);
+
 }
