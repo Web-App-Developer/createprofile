@@ -1,35 +1,79 @@
 $(document).ready(function () {
 
     $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").on('click', function () {
-        Add_Skills_Section();
+
+        var pass_skillcount = getQuizCounters();
+        Add_Skills_Section(pass_skillcount);
     });
     $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").on('click', function () {
         Add_Credential();
     });
 
 
-    $(".delete").click(function () {
-        Remove_Skills_Section();
-
-    });
+    $('#webflow_skills').on('click', 'a.delete', function(events){
+        $(this).parents('div').parents('div').eq(1).remove();
+        var skillCountAfterRemove = getQuizCounters();
+        Rerender_Skills_Section(skillCountAfterRemove);
+     });
 });
-function Add_Skills_Section() {
-    var skills = $("#webflow_skills >  .quiz-buiilder-question");
-    var SkillsCount = skills.length;
-    var i = parseInt(SkillsCount);
-    console.log("SkillsCount", i)
-    var addSkillSection =
-        '<div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7" class="w-layout-grid quiz-buiilder-question">' +
-            '<div id = "w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93e-25be96d7" class="quiz-builder-question-number" >' +
-                '<div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">' + (i + 2) + '</div>' +
-            '</div>' +
-            '<div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb941-25be96d7" class="quiz-builder-question"><input type="text" class="modal-input w-input" maxlength="256" name="Skill" data-name="Skill" placeholder="" id="Skill">' +
-                '<a href="#" class="button dashboard-body modal-button delete quiz w-button"><span class="inline-leading-icon"><strong></strong></span>Remove Skill</a>' +
-            '</div>' +
-        '</div >';
-    $("#webflow_skills").append(addSkillSection);
 
+
+function getQuizCounters(){
+    var skills = $("#webflow_skills > .profile-add");
+    var skillsCount = skills.length;
+    var pass_skillcount = parseInt(skillsCount) + 1;
+    console.log("=======skillCount====", pass_skillcount)
+    return pass_skillcount
 }
+
+
+function Add_Skills_Section(skillCount) {
+    console.log("SkillsCount", skillCount)
+    var addSkillSection = `
+        <div class="w-layout-grid profile-add">
+            <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7" class="w-layout-grid quiz-buiilder-question">
+                <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93e-25be96d7" class="quiz-builder-question-number">
+                    <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ skillCount +`</div>
+                </div>
+                <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb941-25be96d7" class="quiz-builder-question">
+                    <input type="text" class="modal-input w-input" maxlength="256" name="Skill" data-name="Skill" placeholder="" id="Skill">
+                    <a href="#" class="button dashboard-body modal-button delete quiz w-button">
+                        <span class="inline-leading-icon"><strong></strong></span>Remove Skill
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    $("#webflow_skills").append(addSkillSection);
+}
+
+
+function Rerender_Skills_Section(skillCount) {
+    console.log("Rerender_Skills_Section", skillCount)
+    // var appendFile = ''
+    // $(".profile-add").empty();
+    // appendFile += `<h3 class="heading-19">Skills</h3>`; 
+    // appendFile += `<p class="paragraph-5">You may add up to 8 skills.</p>`; 
+    // var addSkillSection = `
+    //     <div class="w-layout-grid profile-add">
+    //         <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7" class="w-layout-grid quiz-buiilder-question">
+    //             <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93e-25be96d7" class="quiz-builder-question-number">
+    //                 <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ skillCount +`</div>
+    //             </div>
+    //             <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb941-25be96d7" class="quiz-builder-question">
+    //                 <input type="text" class="modal-input w-input" maxlength="256" name="Skill" data-name="Skill" placeholder="" id="Skill">
+    //                 <a href="#" class="button dashboard-body modal-button delete quiz w-button">
+    //                     <span class="inline-leading-icon"><strong></strong></span>Remove Skill
+    //                 </a>
+    //             </div>
+    //         </div>
+    //     </div>
+    // `;
+    // appendFile += addSkillSection;
+    // $("#webflow_skills").append(appendFile);
+}
+
+
 function Add_Credential() {
     var Credentials = $("#webflow_credentials >  .quiz-buiilder-question");
     var CredentialsCount = Credentials.length;
