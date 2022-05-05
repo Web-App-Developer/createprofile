@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     $('#webflow_skills').on('click', 'a.delete', function(events){
-        $(this).parents('div').parents('div').eq(1).remove();
+        Remove_Skills_Section()
         var skillCountAfterRemove = getQuizCounters();
         Rerender_Skills_Section(skillCountAfterRemove);
      });
@@ -21,8 +21,7 @@ function getQuizCounters(){
     var skills = $("#webflow_skills > .profile-add-new");
     var skillsCount = skills.length;
     var pass_skillcount = parseInt(skillsCount);
-    console.log("=======skillCount====", pass_skillcount)
-    return pass_skillcount
+    return pass_skillcount;
 }
 
 
@@ -79,7 +78,6 @@ function Add_Credential() {
     var Credentials = $("#webflow_credentials >  .quiz-buiilder-question");
     var CredentialsCount = Credentials.length;
     var i = parseInt(CredentialsCount);
-    // console.log("CredentialsCount", i)
     
     var addCredentialSection = `
             <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db5-25be96d7" class="w-layout-grid profile-add-row"> 
@@ -101,7 +99,5 @@ function Add_Credential() {
     }
 
 function Remove_Skills_Section() {
-    alert('REMOVEACTION');
-    $("#w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7").remove();  //remove Div element
-    Add_Skills_Section();
+    $(this).parents('div').parents('div').eq(1).remove();
 }
