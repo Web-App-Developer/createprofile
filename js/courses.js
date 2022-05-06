@@ -96,16 +96,3 @@ function RenderAccordianarea(quizsCount){
 
         $(".grid-builder-questions .quiz-builder-question-wrap").parent('div').append(appendFile);
 }
-
-
-function Expend(){
-    $("#w-node-ef986d02-1c34-986b-3f96-b916195a7845-bbbe96d4").css("display", "block");
-    $("#w-node-_86f4356f-b9e5-12e3-8c89-35891eba50bb-bbbe96d4").css("display", "none");
-}
-
-
-function Minimize(){
-    // alert('Minimized functionality');
-    $("#w-node-ef986d02-1c34-986b-3f96-b916195a7845-bbbe96d4").css("display", "none");
-    $("#w-node-_86f4356f-b9e5-12e3-8c89-35891eba50bb-bbbe96d4").css("display", "block");
-}
