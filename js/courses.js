@@ -8,7 +8,9 @@ $(document).ready(function () {
 
 // Expended function
     $('.grid-builder-questions').on('click', 'a.quiz', function(e){
-        $(this).parents('.collapse').siblings('.expended').css("display", "block");
+        $(".grid-builder-questions").find(".expended").css("display", "none");
+        $(".grid-builder-questions").find(".collapse").css("display", "block");
+        $(this).parents('.collapse').next('.expended').css("display", "block");
         $(this).parents('.collapse').css("display", "none");
     });
 
