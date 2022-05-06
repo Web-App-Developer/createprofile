@@ -62,7 +62,7 @@ function Add_Skills_Section(skillCount) {
         <div class="w-layout-grid profile-add profile-add-new">
             <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7" class="w-layout-grid quiz-buiilder-question">
                 <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93e-25be96d7" class="quiz-builder-question-number">
-                    <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ (skillCount + 2)+`</div>
+                    <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ (skillCount + 1)+`</div>
                 </div>
                 <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb941-25be96d7" class="quiz-builder-question">
                     <input type="text" class="modal-input w-input" maxlength="256" name="Skill" data-name="Skill" placeholder="" id="Skill">
@@ -89,7 +89,7 @@ function Rerender_Skills_Section(renderCount) {
             <div class="w-layout-grid profile-add profile-add-new">
                 <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93d-25be96d7" class="w-layout-grid quiz-buiilder-question">
                     <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93e-25be96d7" class="quiz-builder-question-number">
-                        <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ (k + 2) +`</div>
+                        <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb93f-25be96d7">`+ (k + 1) +`</div>
                     </div>
                     <div id="w-node-d37d29a3-5d3b-a003-ff40-6e0b9eefb941-25be96d7" class="quiz-builder-question">
                         <input type="text" class="modal-input w-input" maxlength="256" name="Skill" data-name="Skill" placeholder="" id="Skill">
@@ -112,7 +112,7 @@ function Add_Credential(CrendentialCount) {
     <div class="w-layout-grid profile-add crendentials">
         <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db5-25be96d7" class="w-layout-grid profile-add-row">
         <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db6-25be96d7" class="profile-add-row-column">
-            <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db7-25be96d7">`+ (CrendentialCount + 2) +`</div>
+            <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db7-25be96d7">`+ (CrendentialCount + 1) +`</div>
         </div>
         <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db9-25be96d7" class="quiz-builder-question"><label for="Education-Credential" class="modal-input-label-copy">Credential</label><input type="text" class="modal-input w-input" maxlength="256" name="Education-Credential" data-name="Education Credential" placeholder="" id="Education-Credential"><label for="Education-Issuer" class="modal-input-label">Issuer</label><input type="text" class="modal-input w-input" maxlength="256" name="Education-Issuer" data-name="Education Issuer" placeholder="" id="Education-Issuer">
             <a href="#" class="button dashboard-body modal-button delete quiz w-button"><span class="inline-leading-icon"><strong></strong></span>Remove Credential</a>
@@ -140,7 +140,7 @@ function Rerender_Crendentials_Section(CredentialCounters){
             <div class="w-layout-grid profile-add crendentials">
                 <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db5-25be96d7" class="w-layout-grid profile-add-row">
                 <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db6-25be96d7" class="profile-add-row-column">
-                    <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db7-25be96d7">`+ (k + 2) +`</div>
+                    <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db7-25be96d7">`+ (k + 1) +`</div>
                 </div>
                 <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db9-25be96d7" class="quiz-builder-question"><label for="Education-Credential" class="modal-input-label-copy">Credential</label><input type="text" class="modal-input w-input" maxlength="256" name="Education-Credential" data-name="Education Credential" placeholder="" id="Education-Credential"><label for="Education-Issuer" class="modal-input-label">Issuer</label><input type="text" class="modal-input w-input" maxlength="256" name="Education-Issuer" data-name="Education Issuer" placeholder="" id="Education-Issuer">
                     <a href="#" class="button dashboard-body modal-button delete quiz w-button"><span class="inline-leading-icon"><strong></strong></span>Remove Credential</a>
@@ -166,7 +166,7 @@ function Add_Employment(employmentCount) {
     <div class="w-layout-grid profile-add employment">
         <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e57-25be96d7" class="w-layout-grid profile-add-row">
         <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e58-25be96d7" class="profile-add-row-column">
-            <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e59-25be96d7"> `+ ( employmentCount + 2)+`</div>
+            <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e59-25be96d7"> `+ ( employmentCount + 1)+`</div>
         </div>
         <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e5b-25be96d7" class="quiz-builder-question"><label for="Employer-Name-2" class="modal-input-label-copy">Employer</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name" data-name="Employer Name" placeholder="" id="Employer-Name-2"><label for="Employment-Position" class="modal-input-label">Position</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position" data-name="Employment Position" placeholder="" id="Employment-Position"><label for="Address-2" class="modal-input-label">Start Date</label>
             <div class="html-embed-3 w-embed"><input type="datetime-local" id="meeting-time" name="meeting-time" value="2022-01-01T00:00" min="2022-01-01T00:00" class="modal-input"></div><label for="Address-2" class="modal-input-label">End Date</label>
@@ -193,7 +193,7 @@ function Rerender_Employments_Section(employmentCount){
         <div class="w-layout-grid profile-add employment">
             <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e57-25be96d7" class="w-layout-grid profile-add-row">
                 <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e58-25be96d7" class="profile-add-row-column">
-                    <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e59-25be96d7"> `+ ( k + 2)+`</div>
+                    <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e59-25be96d7"> `+ ( k + 1)+`</div>
                 </div>
                 <div id="w-node-b23da42d-bbee-cce0-8a20-97c43f455e5b-25be96d7" class="quiz-builder-question"><label for="Employer-Name-2" class="modal-input-label-copy">Employer</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name" data-name="Employer Name" placeholder="" id="Employer-Name-2"><label for="Employment-Position" class="modal-input-label">Position</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position" data-name="Employment Position" placeholder="" id="Employment-Position"><label for="Address-2" class="modal-input-label">Start Date</label>
                     <div class="html-embed-3 w-embed"><input type="datetime-local" id="meeting-time" name="meeting-time" value="2022-01-01T00:00" min="2022-01-01T00:00" class="modal-input"></div><label for="Address-2" class="modal-input-label">End Date</label>
@@ -222,7 +222,7 @@ function Add_References(referenceCount){
     addReferenceSection = `
         <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac143-25be96d7" class="w-layout-grid profile-add-row references">
             <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac144-25be96d7" class="profile-add-row-column">
-            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (referenceCount + 2) +`</div>
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (referenceCount + 1) +`</div>
             </div>
             <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac147-25be96d7" class="quiz-builder-question"><label for="Employer-Name-3" class="modal-input-label-copy">Full Name</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name-3" data-name="Employer Name 3" placeholder="" id="Employer-Name-3"><label for="Employment-Position-2" class="modal-input-label">Relationship</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2"><label for="Employment-Position-3" class="modal-input-label">Phone
                 Number</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2">
@@ -243,7 +243,7 @@ function Rerender_References_Section(referenceCount){
         addReferenceSection += `
         <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac143-25be96d7" class="w-layout-grid profile-add-row references">
             <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac144-25be96d7" class="profile-add-row-column">
-            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (k + 2) +`</div>
+            <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac145-25be96d7">`+ (k + 1) +`</div>
             </div>
             <div id="w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac147-25be96d7" class="quiz-builder-question"><label for="Employer-Name-3" class="modal-input-label-copy">Full Name</label><input type="text" class="modal-input w-input" maxlength="256" name="Employer-Name-3" data-name="Employer Name 3" placeholder="" id="Employer-Name-3"><label for="Employment-Position-2" class="modal-input-label">Relationship</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2"><label for="Employment-Position-3" class="modal-input-label">Phone
                 Number</label><input type="text" class="modal-input w-input" maxlength="256" name="Employment-Position-2" data-name="Employment Position 2" placeholder="" id="Employment-Position-2">
