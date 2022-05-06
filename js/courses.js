@@ -31,10 +31,10 @@ $(document).ready(function () {
         $(this).attr("checked",true);
     });
 
-    //  delete-question function
+     // Both Collapse/Expend Section Deleted function at once
     $('.grid-builder-questions').on('click','a.delete-question', function (e) {
-        $(this).closest('.expended').prev('.collapse').remove();
-        $(this).closest('.expended').remove();
+        $(this).parents('.expended').prev('.collapse').remove();
+        $(this).parents('.expended').remove();
         var quizsCount = getQuizsCount();
         renderAccordian(quizsCount);
     });
@@ -50,7 +50,8 @@ function getQuizsCount(){
 function addQuizs(quizsCount){
     var appendFile = '';
     const k= quizsCount;
-    appendFile += `<div id="w-node-_86f4356f-b9e5-12e3-8c89-35891eba50bb-bbbe96d4" class="w-layout-grid quiz-builder-question-wrap collapse"  style="display:none;">
+    appendFile += 
+        `<div id="w-node-_86f4356f-b9e5-12e3-8c89-35891eba50bb-bbbe96d4" class="w-layout-grid quiz-builder-question-wrap collapse"  style="display:none;">
             <div id="w-node-_58ade7b9-d8a5-4d37-1e12-a57e681ea8b9-bbbe96d4" class="quiz-builder-question-number">
                         <div id="w-node-_121a5b3b-c8da-277a-bf3d-8cbd696ba5e3-bbbe96d4">Q`+ (k + 1) +`</div>
                         </div>
@@ -110,7 +111,7 @@ function addQuizs(quizsCount){
 
 function renderAccordian(quizsCount){
     var appendFile = ''
-    const quizs = document.querySelectorAll('.collapse');
+    const quizs = document.querySelectorAll('.quiz-builder-question-wrap');
     quizs.forEach(quiz => {
         quiz.remove();
     });
@@ -173,6 +174,6 @@ function renderAccordian(quizsCount){
             </div>`;
     }
 
-    $(".grid-builder-questions .quiz-builder-question-wrap").parent('div').append(appendFile);
+    $(".grid-builder-questions .quiz-builder-question-wrap").append(appendFile);
 
 }
