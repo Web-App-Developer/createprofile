@@ -33,8 +33,8 @@ $(document).ready(function () {
 
     //  delete-question function
     $('.grid-builder-questions').on('click','a.delete-question', function (e) {
+        $(this).closest('.expended').prev('.collapse').remove();
         $(this).closest('.expended').remove();
-        $(this).closest('.expended').next('.collapse').remove();
         var quizsCount = getQuizsCount();
         renderAccordian(quizsCount);
     });
