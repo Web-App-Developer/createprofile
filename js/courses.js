@@ -1,18 +1,22 @@
 $(document).ready(function () {
     
-  
-    
-    $("#w-node-bca04cdb-f0e3-f749-e851-e8e445d6f384-bbbe96d4").on('click', function () {
+  //add Question function
+    $(".add-question").on('click', function () {
         var quizsCount = getQuizsCount();
-       RenderAccordianarea(quizsCount);
+        RenderAccordianarea(quizsCount);
     });
-    $("#w-node-_155079ec-3884-ea4d-8d0a-2387b9881bdb-bbbe96d4").on('click', function () {
-        Expend();
+
+// Expended function
+    $('.grid-builder-questions').on('click', 'a.quiz', function(e){
+        $(this).parents('.collapse').siblings('.expended').css("display", "block");
+        $(this).parents('.collapse').css("display", "none");
     });
 
 
-    $("#w-node-_0c2c5ac6-42eb-c16d-6c8b-ce5f5e9d9879-bbbe96d4").on('click', function () {
-        Minimize();
+// Collapse function
+    $('.grid-builder-questions').on('click','a.minimize', function (e) {
+        $(this).parents('.expended').siblings('.collapse').css("display", "block");
+        $(this).parents('.expended').css("display", "none");
     });
 
     $('.answer-options').on('click', 'input.w-checkbox-input', function(e){
@@ -32,8 +36,7 @@ function getQuizsCount(){
 function RenderAccordianarea(quizsCount){
     var appendFile = '';
     const k= quizsCount;
-    // for (k = 0 ; k < quizsCount; k++){
-        appendFile += 
+    appendFile += 
         `<div id="w-node-_86f4356f-b9e5-12e3-8c89-35891eba50bb-bbbe96d4" class="w-layout-grid quiz-builder-question-wrap collapse">
             <div id="w-node-_58ade7b9-d8a5-4d37-1e12-a57e681ea8b9-bbbe96d4" class="quiz-builder-question-number">
             <div id="w-node-_121a5b3b-c8da-277a-bf3d-8cbd696ba5e3-bbbe96d4">Q`+ (k + 1) +`</div>
@@ -61,7 +64,7 @@ function RenderAccordianarea(quizsCount){
             <a id="w-node-_155079ec-3884-ea4d-8d0a-2387b9881bdb-bbbe96d4" href="#" class="button dashboard-body modal-button quiz w-button"><span class="inline-leading-icon"></span>Expand Question</a>
         </div>
 
-        <div id="w-node-_8db722d7-adae-2408-ef7c-7eefc014bb53-bbbe96d4_toggle" class="w-layout-grid quiz-builder-question-wrap expended" style="display:none;">
+        <div id="w-node-_8db722d7-adae-2408-ef7c-7eefc014bb53-bbbe96d4" class="w-layout-grid quiz-builder-question-wrap expended" style="display:none;">
                 <div id="w-node-ef986d02-1c34-986b-3f96-b916195a7846-bbbe96d4" class="quiz-builder-question-number">
                     <div id="w-node-ef986d02-1c34-986b-3f96-b916195a7847-bbbe96d4">Q`+ (k + 2) +`</div>
                     </div>
@@ -91,7 +94,7 @@ function RenderAccordianarea(quizsCount){
             </div>`;
         // }
 
-    $(".grid-builder-questions .quiz-builder-question-wrap").parent('div').append(appendFile);
+        $(".grid-builder-questions .quiz-builder-question-wrap").parent('div').append(appendFile);
 }
 
 
