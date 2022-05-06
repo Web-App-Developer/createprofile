@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").on('click', function () {
         var skillCount = getSkillsCounters();
+        toggleAddSkillButton(skillCount);
         addSkillsSection(skillCount);
     });
 
@@ -26,7 +27,8 @@ $(document).ready(function () {
         $(this).parents('div').parents('div').eq(1).remove();
 
         var skillCountAfterRemove = getSkillsCounters();
-        Rerender_Skills_Section(skillCountAfterRemove);
+        renderSkillSection(skillCountAfterRemove);
+        toggleAddSkillButton(skillCountAfterRemove);
      });
 
     $('#webflow_credentials').on('click', 'a.delete', function(events){
@@ -51,6 +53,13 @@ $(document).ready(function () {
 
 });
 
+function toggleAddSkillButton(skillCount){
+    // console.log("toggleAddSkills",skillCount);
+    if (skillCount  > 5)
+        $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "none");
+    else
+        $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "block");
+}
 
 function getSkillsCounters(){
     var skills = $("#webflow_skills > .profile-add-new");
@@ -80,7 +89,7 @@ function addSkillsSection(skillCount) {
 }
 
 
-function Rerender_Skills_Section(renderCount) {
+function renderSkillSection(renderCount) {
     var appendFile = ''
     var addSkillSection = '';
     const quizs = document.querySelectorAll('.profile-add-new');
