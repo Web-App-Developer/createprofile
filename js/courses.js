@@ -39,7 +39,28 @@ $(document).ready(function () {
         renderAccordian(quizsCount);
     });
 
+    //Sending form datas to endpoint via POST Request
+    $(".save-button").on('click', function(e){
+        saveAllDatas();
+    });
+
 });
+
+function saveAllDatas(){
+    alert('saveAllDatas')
+    var formData = $("#email-form").serializeArray();
+    $.ajax({
+        type: "POST",
+        url: "/ENDPOINT",
+        data: formData,
+        success: function(response) {
+            alert(response);  
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
+}
 
 function getQuizsCount(){
     var quizs = $(".grid-builder-questions > .collapse");
