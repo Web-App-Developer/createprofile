@@ -7,8 +7,6 @@ $(document).ready(function () {
 
     // Section Expended function
     $('.grid-builder-questions').on('click', 'a.quiz', function(e){
-        // $(".grid-builder-questions").find(".expended").css("display", "none");
-        // $(".grid-builder-questions").find(".collapse").css("display", "block");
         $(this).parents('.collapse').next('.expended').css("display", "block");
         $(this).parents('.collapse').css("display", "none");
     });
@@ -16,8 +14,6 @@ $(document).ready(function () {
 
     // Section Collapsed function
     $('.grid-builder-questions').on('click','a.minimize', function (e) {
-        // $(".grid-builder-questions").find(".expended").css("display", "none");
-        // $(".grid-builder-questions").find(".collapse").css("display", "block");
         $(this).parents('.expended').prev('.collapse').css("display", "block");
         $(this).parents('.expended').css("display", "none");
     });
@@ -47,7 +43,7 @@ $(document).ready(function () {
 });
 
 function saveAllDatas(){
-    alert('saveAllDatas')
+
     var formData = $("#email-form").serializeArray();
     $.ajax({
         type: "POST",
