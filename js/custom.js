@@ -2,23 +2,26 @@ $(document).ready(function () {
 
     $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").on('click', function () {
         var skillCount = getSkillsCounters();
-        toggleAddSkillButton(skillCount);
         addSkillsSection(skillCount);
+        toggleAddSkillButton(skillCount,"add");
     });
 
     $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").on('click', function () {
         var crendentialCount = getCredentialCounters();
         addCrendentialSection(crendentialCount);
+        toggleAddCrendentialButton(crendentialCount,"add");
     });
 
     $("#w-node-b23da42d-bbee-cce0-8a20-97c43f455e67-25be96d7").on('click', function () {
         var employmentCount = getEmploymentCounters();
         addEmploymentSection(employmentCount);
+        toggleAddEmploymentButton(employmentCount,"add");
     });
 
     $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").on('click', function () {
         var referenceCount = getReferenceCounters();
         addReferenceSection(referenceCount);
+        toggleAddReferenceButton(referenceCount,"add");
     });
 
 
@@ -27,38 +30,91 @@ $(document).ready(function () {
         $(this).parents('div').parents('div').eq(1).remove();
 
         var skillCountAfterRemove = getSkillsCounters();
+        console.log('skillCountAfterRemove', skillCountAfterRemove);
         renderSkillSection(skillCountAfterRemove);
-        toggleAddSkillButton(skillCountAfterRemove);
+        toggleAddSkillButton(skillCountAfterRemove, "remove");
      });
 
     $('#webflow_credentials').on('click', 'a.delete', function(events){
         $(this).parents('div').parents('div').eq(1).remove();
-        var CredentialCounters = getCredentialCounters();
-        Rerender_Crendentials_Section(CredentialCounters);
+        var crendentialCount = getCredentialCounters();
+        rerenderCredentialSection(crendentialCount);
+        toggleAddCrendentialButton(crendentialCount,"remove");
      });
     $('#webflow_employments').on('click', 'a.delete', function(events){
         $(this).parents('div').parents('div').eq(1).remove();
 
-        var EmploymentCounters = getEmploymentCounters();
-        renderEmploymentSection(EmploymentCounters);
+        var employmentCount = getEmploymentCounters();
+        renderEmploymentSection(employmentCount);
+        toggleAddEmploymentButton(employmentCount,"remove");
      });
 
     $('#webflow_references').on('click', 'a.delete', function(events){
         $(this).parents('div').eq(1).remove();
 
-        var referenceCounters = getReferenceCounters();
-        renderReferenceSection(referenceCounters);
+        var referenceCount = getReferenceCounters();
+        renderReferenceSection(referenceCount);
+        toggleAddReferenceButton(referenceCount,"remove");
      });
 
 
 });
 
-function toggleAddSkillButton(skillCount){
-    // console.log("toggleAddSkills",skillCount);
-    if (skillCount  > 5)
-        $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "none");
-    else
-        $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "block");
+function toggleAddSkillButton(skillCount, editStatus){
+    console.log("toggleAddSkills",toggleAddSkillButton);
+    if( editStatus === "remove") {
+        if (skillCount  > 6) 
+            $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "none");
+        else
+            $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "block");
+    }else{
+        if (skillCount  > 5) 
+            $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "none");
+        else
+            $("#w-node-_0941d12c-eae9-33b6-8979-5d22a2baec9c-25be96d7").css("display", "block");
+    }
+}
+
+function toggleAddCrendentialButton(crendentialCount, editStatus){
+    if( editStatus === "remove") {
+        if (crendentialCount  > 2) 
+            $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").css("display", "none");
+        else
+            $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").css("display", "block");
+    }else{
+        if (crendentialCount  > 1) 
+            $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").css("display", "none");
+        else
+            $("#w-node-fd5f3992-2c7f-76a2-4117-70a223359dc0-25be96d7").css("display", "block");
+    }
+}
+
+function toggleAddEmploymentButton(employmentCount, editStatus){
+    if( editStatus === "remove") {
+        if (employmentCount  > 2) 
+            $("#w-node-b23da42d-bbee-cce0-8a20-97c43f455e67-25be96d7").css("display", "none");
+        else
+            $("#w-node-b23da42d-bbee-cce0-8a20-97c43f455e67-25be96d7").css("display", "block");
+    }else{
+        if (employmentCount  > 1) 
+            $("#w-node-b23da42d-bbee-cce0-8a20-97c43f455e67-25be96d7").css("display", "none");
+        else
+            $("#w-node-b23da42d-bbee-cce0-8a20-97c43f455e67-25be96d7").css("display", "block");
+    }
+}
+
+function toggleAddReferenceButton(referenceCount, editStatus){
+    if( editStatus === "remove") {
+        if (referenceCount  > 2) 
+            $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").css("display", "none");
+        else
+            $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").css("display", "block");
+    }else{
+        if (referenceCount  > 1) 
+            $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").css("display", "none");
+        else
+            $("#w-node-a0048bd4-ca10-ef28-8f09-a607ee6ac15c-25be96d7").css("display", "block");
+    }
 }
 
 function getSkillsCounters(){
@@ -140,14 +196,14 @@ function getCredentialCounters(){
     return CredentialsCount;
 }
 
-function Rerender_Crendentials_Section(CredentialCounters){
+function rerenderCredentialSection(crendentialCount){
     var appendFile = ''
     var addCredentialSection = '';
     const crendentials = document.querySelectorAll('.crendentials');
     crendentials.forEach(crendential => {
         crendential.remove();
     });
-    for (var k = 0 ; k < CredentialCounters; k++){
+    for (var k = 0 ; k < crendentialCount; k++){
         addCredentialSection += `
             <div class="w-layout-grid profile-add crendentials">
                 <div id="w-node-fd5f3992-2c7f-76a2-4117-70a223359db5-25be96d7" class="w-layout-grid profile-add-row">
