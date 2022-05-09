@@ -19,7 +19,38 @@ $(document).ready(function(){
         const appendEle = render(Questions)
         $(".grid-builder-questions").append(appendEle)
     })
-    
+
+    // Section Expended(expend) function
+    $('.grid-builder-questions').on('click', 'a.quiz', function(e){
+        $(this).parents('.collapse').next('.expended').css("display", "block")
+        $(this).parents('.collapse').css("display", "none")
+    })
+
+    // Section Collapsed(minimize) function
+    $('.grid-builder-questions').on('click','a.minimize', function (e) {
+        $(this).parents('.expended').prev('.collapse').css("display", "block")
+        $(this).parents('.expended').css("display", "none")
+    })
+
+    //radio functionality implementation of 2 checkboxs
+    $(document).on('click', 'input.w-checkbox-input', function(e){
+        var checkedbox = Array.from(document.querySelectorAll(".w-checkbox-input")).find(chbx=>chbx!=e.target&&chbx.checked)
+        if(checkedbox){
+            $(checkedbox).prop('checked', false)
+        }
+        $(this).attr("checked",true)
+    })
+     
+    // Both Collapse/Expend Section Deleted function at once
+    $('.grid-builder-questions').on('click','a.delete-question', function (e) {
+        Questions = removeQuestions(Questions)
+        render(Questions)
+    })
+
+    //Sending form datas to endpoint via POST Request
+    $(".save-button").on('click', function(e){
+        saveAllDatas()
+    })
 })
 
 function addQuestions(Questions){
@@ -40,6 +71,28 @@ function addQuestions(Questions){
         }
     ]
     const  returnQuestions = Questions.concat(concat)
+    console.log("returnQuestions", returnQuestions)
+    return returnQuestions
+}
+
+function removeQuestions(Questions){
+    console.log('firstquestion', Questions)
+    const remove =  [
+        {
+            question: "",
+            options: [
+                {
+                    text: "",
+                    correct: true,
+                },
+                {
+                    text: "",
+                    correct: false,
+                },
+            ],
+        }
+    ]
+    const  returnQuestions = Questions.concat(remove)
     console.log("returnQuestions", returnQuestions)
     return returnQuestions
 }
@@ -115,9 +168,6 @@ function render(questions){
                                   <a id="w-node-_0c2c5ac6-42eb-c16d-6c8b-ce5f5e9d9879-bbbe96d4" href="#" class="repeater-button minimize w-button"><span class="inline-leading-icon"><strong></strong></span>Minimize Question</a>
                                   <a id="w-node-_8e196735-a74d-dcac-a62a-efc1c3fe9224-bbbe96d4" href="#" class="repeater-button delete-question w-button"><span class="inline-leading-icon"><strong></strong></span>Delete Question</a>`
                             })
-                    
-                            
-                            
                 renderedText += `</div>`
     })
 
