@@ -5,23 +5,23 @@ $(document).ready(function () {
 
     // Section Expended function
     $('.grid-builder-questions').on('click', 'a.quiz', function(e){
-      $(this).parents('.collapse').next('.expended').css("display", "block");
-      $(this).parents('.collapse').css("display", "none");
+      $(this).parents('.collapse').next('.expended').show();
+      $(this).parents('.collapse').hide();
     });
 
     // Section Collapsed function
     $('.grid-builder-questions').on('click','a.minimize', function (e) {
       const parentObj = $(this).parents('.expended');
-      parentObj.prev('.collapse').css("display", "block");
+      parentObj.prev('.collapse').show();
 
       parentObj.find("input.w-checkbox-input").each(function (index) {
         parentObj.prev('.collapse').find(".option-wrap").eq(index).toggleClass("correct", $(this).is(":checked"))
       });
 
-      parentObj.css("display", "none");
+      parentObj.hide();
     });
 
-    //  // Both Collapse/Expend Section Deleted function at once
+    // Both Collapse/Expend Section Deleted function at once
     $('.grid-builder-questions').on('click','a.delete-question', function (e) {
       var parentObj = $(this).parent();
       parentObj.prev('.collapse').remove();
@@ -34,7 +34,72 @@ $(document).ready(function () {
       $(".grid-builder-questions > .expended").each(function (index) {
         $(this).find(".quiz-builder-question-number").eq(0).html(`<div>Q${index + 1}</div>`)
       });
+    });
 
+    $(document).on('click','a.add-option', function (e) {
+      var answerOptions = $(this).prev('.answer-options');
+      const options = answerOptions.find(".option-wrap").length;
+
+      answerOptions.append(`
+        <div class="w-layout-grid option-wrap">
+          <div class="quiz-builder-question-number options">
+            <div>${String.fromCharCode(65 + options)}</div>
+          </div>
+          <div>
+            <label for="email-3" class="question-header">Option Text</label>
+            <input type="text" class="modal-input w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" id="email-2" required="">
+          </div>
+          <div> </div>
+          <label class="w-checkbox">
+            <input type="checkbox" id="checkbox-option2" name="checkbox-option" data-name="Checkbox 4" class="w-checkbox-input">
+            <span class="quiz-builder-label w-form-label" for="checkbox-option2">Correct Answer?</span>
+          </label>
+          <a href="#" class="repeater-button delete-option w-button">
+            <span class="inline-leading-icon"><strong></strong></span>Delete Option
+          </a>
+        </div>
+      `);
+
+      const minizedOptions = $(this).parents('.quiz-builder-question-wrap.expended').prev('.collapse').find('.quiz-builder-question-minimized');
+      minizedOptions.append(`
+        <div class="w-layout-grid option-wrap">
+          <div class="quiz-builder-question-number options">
+            <div>${String.fromCharCode(65 + options)}</div>
+          </div>
+          <div>
+            <label for="email-3" class="option-header">
+
+            </label>
+          </div>
+        </div>
+      `);
+    });
+
+    $(document).on('click','a.delete-option', function (e) {
+      var parentObj = $(this).parent();
+      var index = parentObj.index();
+      var parentParentObj = parentObj.parent();
+      parentObj.remove();
+
+      parentParentObj.find('.option-wrap').each(function (i) {
+        $(this).find('.quiz-builder-question-number').eq(0).html(`<div>${String.fromCharCode(65 + i)}</div>`)
+      });
+
+      var minizedOptions = parentParentObj.parents('.quiz-builder-question-wrap.expended').prev('.collapse');
+      minizedOptions.find('.option-wrap').eq(index).remove();
+
+      minizedOptions.find('.option-wrap').each(function (i) {
+        $(this).find('.quiz-builder-question-number').eq(0).html(`<div>${String.fromCharCode(65 + i)}</div>`)
+      });
+    });
+
+    $(document).on('change', 'input.repeater-input.w-input', function () {
+      $(this).parents('.quiz-builder-question-wrap.expended').prev('.collapse').find('.question-header').eq(0).html($(this).val());
+    });
+    
+    $(document).on('change', 'input.modal-input.w-input', function () {
+      const index = $(this).parents('.option-wrap').index();
+      $(this).parents('.quiz-builder-question-wrap.expended').prev('.collapse').find('.option-header').eq(index).html($(this).val());
     });
 
     //Sending form datas to endpoint via POST Request
@@ -67,21 +132,13 @@ function addQuizs() {
         <div>Q${quizs}</div>
       </div>
       <div class="quiz-builder-question-minimized">
-        <label for="email-2" class="question-header">What is the answer to this question?</label>
+        <label for="email-2" class="question-header"></label>
         <div class="w-layout-grid option-wrap">
           <div class="quiz-builder-question-number options">
             <div>A</div>
           </div>
           <div>
-            <label for="email-3" class="option-header">Answer One</label>
-          </div>
-        </div>
-        <div class="w-layout-grid option-wrap correct">
-          <div class="quiz-builder-question-number options">
-            <div>B</div>
-          </div>
-          <div>
-            <label for="email-3" class="option-header">Answer Two</label>
+            <label for="email-3" class="option-header"></label>
           </div>
         </div>
       </div>
@@ -90,7 +147,7 @@ function addQuizs() {
       </a>
     </div>
 
-    <div class="w-layout-grid quiz-builder-question-wrap expended" style="display: block;">
+    <div class="w-layout-grid quiz-builder-question-wrap expended">
       <div class="quiz-builder-question-number">
         <div>Q${quizs}</div>
       </div>
@@ -112,23 +169,6 @@ function addQuizs() {
               <input type="checkbox" id="checkbox-option1" name="checkbox-option" data-name="Checkbox 4" class="w-checkbox-input">
               <span class="quiz-builder-label w-form-label" for="checkbox-4">Correct Answer?</span>
             </label>
-          </div>
-          <div class="w-layout-grid option-wrap">
-            <div class="quiz-builder-question-number options">
-              <div>B</div>
-            </div>
-            <div>
-              <label for="email-3" class="question-header">Option Text</label>
-              <input type="text" class="modal-input w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" id="email-2" required="">
-            </div>
-            <div> </div>
-            <label class="w-checkbox">
-              <input type="checkbox" id="checkbox-option2" name="checkbox-option" data-name="Checkbox 4" class="w-checkbox-input">
-              <span class="quiz-builder-label w-form-label" for="checkbox-option2">Correct Answer?</span>
-            </label>
-            <a href="#" class="repeater-button delete-option w-button">
-              <span class="inline-leading-icon"><strong></strong></span>Delete Option
-            </a>
           </div>
         </div>
         <a href="#" class="repeater-button add-option w-button">
